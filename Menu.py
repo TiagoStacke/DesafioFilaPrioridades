@@ -4,6 +4,7 @@ from Max_heap import MaxHeap
 class Menu:
     def emergencia_menu():
         global ordem
+        global contador
         while (True):
             print("1. Novo paciente ")
             print("2. Chamar paciente ")
@@ -20,7 +21,8 @@ class Menu:
                 item=(prioridade_atendimento, ordem, Paciente.__str__(paciente))
                 maxheap.put(item)
                 ordem = ordem + 1
-                print(paciente.nome_paciente, item)
+                contador = contador - 1
+                print('Limite atendimento do sus = ', contador)
             elif (escolha_opcao == 2):
                 if (maxheap.peek()):
                     atendimentos.append(maxheap.peek())
@@ -43,9 +45,10 @@ class Menu:
                 else:
                     for i in range(1, 6):
                         print(atendimentos[len(atendimentos) - i])
-   
+    
    
 atendimentos = list()
 maxheap = MaxHeap()
 ordem = 0
+contador = 999
 Menu.emergencia_menu()
